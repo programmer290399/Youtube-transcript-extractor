@@ -4,20 +4,10 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from urllib.parse import parse_qs
 import urllib.request
 from bs4 import BeautifulSoup
+from call_script import get_links_proxy
+from inception import inception_finder
 
-out_file = open("urls.txt", "w+")
 
-
-textToSearch = input('enter query')
-query = urllib.parse.quote(textToSearch)
-url = "https://www.youtube.com/results?search_query=" + query
-response = urllib.request.urlopen(url)
-html = response.read()
-soup = BeautifulSoup(html, 'html.parser')
-for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
-    print("Extracting:"+'https://www.youtube.com' + vid['href'] )
-    out_file.write('https://www.youtube.com' + vid['href'] + '\n')
-out_file.close()
 
 
 
