@@ -10,6 +10,7 @@ from subprocess import call
 #-d # debug -> tell everything you're doing
 
 def get_links_proxy(apikey , inception , channel_name ):
+    channel_name = channel_name.replace(" ", "")
     subprocess.call(["python.exe","links_finder.py" , "-k" , apikey , "-c" , channel_name , "-x" , '2018-11-9' , "-y" , inception, "-o" , "urls.txt"])
 
 

@@ -3,10 +3,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import datetime
 
-driver = webdriver.Firefox()
+
 
 def inception_finder(url):
-    
+    driver = webdriver.Firefox()
     url = url + '/about'
 
     driver.get(url)
@@ -16,6 +16,7 @@ def inception_finder(url):
     inception = driver.find_element(By.XPATH , '//*[@id="right-column"]/yt-formatted-string[2]')
     segments = inception.text.split()
     final_format = segments[3] + '-' + months[segments[1]] + '-' + segments[2][:-1]
+    driver.close()
     return(final_format)
 
 if __name__ == '__main__' :
